@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#fff0f5;overflow-x:hidden}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;transition:1s}
+.hidden{display:none !important}
+.card{background:white;padding:28px;border-radius:28px;box-shadow:0 15px 40px rgba(255,90,138,0.2);text-align:center;max-width:380px;width:100%;animation:pop .8s}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+h1{color:#ff5a8a;margin:0 0 10px}
+input{width:90%;padding:14px;border-radius:15px;border:2px solid #ffb3c8;text-align:center;font-size:20px;outline:none;margin:15px 0}
+.btn{background:#ff5a8a;color:white;border:none;padding:13px 30px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 5px 15px rgba(255,90,138,.4)}
+.btn:active{transform:scale(.95)}
+.error{color:#ff3b3b;font-size:14px;margin-top:10px;display:none}
+.ramo{font-size:60px;animation:flotar 2s infinite alternate}
+@keyframes flotar{from{transform:translateY(0)}to{transform:translateY(-15px)}}
+.tulipanes{display:flex;justify-content:center;gap:8px;margin:20px 0;flex-wrap:wrap}
+.tulip{font-size:40px;animation:crecer .8s backwards}
+.tulip:nth-child(1){animation-delay:.1s}.tulip:nth-child(2){animation-delay:.3s}.tulip:nth-child(3){animation-delay:.5s}.tulip:nth-child(4){animation-delay:.7s}.tulip:nth-child(5){animation-delay:.9s}
+@keyframes crecer{from{transform:scale(0) translateY(40px)}to{transform:scale(1) translateY(0)}}
+
+/* UNIVERSO */
+#universo{background:radial-gradient(ellipse at bottom,#1b2735 0%, #090a0f 100%);color:white;flex-direction:column}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+.planetas{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:25px;z-index:2}
+.planeta{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;transition:.3s;box-shadow:inset -10px -10px 20px rgba(0,0,0,.5),0 0 20px rgba(255,255,255,.3);font-size:12px;font-weight:700}
+.planeta:hover{transform:scale(1.15)}
+.planeta span{font-size:32px}
+.mercurio{background:radial-gradient(#c9c9c9,#8a8a8a)}
+.venus{background:radial-gradient(#f7d774,#e6a740)}
+.tierra{background:radial-gradient(#6b93d6,#2a4b8d);box-shadow:0 0 30px #4a90e2}
+.marte{background:radial-gradient(#ff7b5a,#b84a2f)}
+.jupiter{background:radial-gradient(#e8d5b5,#b89a6a);width:130px;height:130px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:10;padding:20px}
+.modal-card{background:white;color:#333;padding:25px;border-radius:20px;max-width:340px;text-align:center;animation:pop .4s}
+</style>
+</head>
+<body>
+
+<div id="pantalla1" class="screen">
+  <div class="card">
+    <h1>Hola muchacha :{</h1>
+    <p>Este regalo tiene contraseña.<br>Solo se abre si sacaste <b>7 o más</b></p>
+    <input type="number" id="calif" placeholder="Tu calificación">
+    <br>
+    <button class="btn" onclick="desbloquear()">Desbloquear 🌷</button>
+    <div id="err" class="error">Tiene que ser 7 o más... tú puedes, inténtalo de nuevo 💪</div>
+  </div>
+</div>
+
+<div id="pantalla2" class="screen hidden">
+  <div class="card">
+    <div class="ramo">💐</div>
+    <div class="tulipanes">
+      <span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌷</span><span class="tulip">🌸</span><span class="tulip">🌷</span>
+    </div>
+    <h1>¡SABÍA QUE PODÍAS!</h1>
+    <p
